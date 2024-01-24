@@ -20,7 +20,7 @@ document.writeln(arr); // ['Быть','или','не','быть']
 <details><summary><b>решение</b></summary>
 
 <div>
-``` 
+ 
 const str = 'Быть или не быть';
 function stringToArray(str) {
 
@@ -31,7 +31,7 @@ const arr = stringToArray(str);
 
 document.writeln(arr); // ['Быть','или','не','быть']
 
-```
+
 ### инфо
 <p>Метод trim() возвращает строку с вырезанными пробельными символами с её концов.</p>
 <p>Метод split() разбивает объект String на массив строк путём разделения строки указанной подстрокой.</p>
