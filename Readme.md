@@ -1,4 +1,5 @@
 <h2 align="center"><img align="center" src="./image/JavaScript-logo.png" height="40" width="40"/>     Java Script задачки</h2>
+<p align="center">Нахожу примеры, решаю, постепенно добавляю...</p>
 
 
 ------ 
