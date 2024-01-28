@@ -1,5 +1,5 @@
 <h2 align="center"><img align="center" src="./image/JavaScript-logo.png" height="40" width="40"/>     Java Script задачки и вопросы</h2>
-<p align="center">собираю из разных источников, развлекаюсь в процессе решения</p>
+<p align="center">собираю из разных источников и тренируюсь проходить...</p2>
 
 ------ 
 
@@ -531,6 +531,168 @@ C: mouse[bird["size"]]
 ### инфо
 <p>При использовании квадратных скобок JavaScript замечает [ и продолжает пока не встретит ]. Только после этого он вычислит то, что находится внутри скобок. mouse[bird.size]: Сперва определяется bird.size, которое равно "small". mouse["small"] возвращает true.</p>
 <p>Но с записью через точку так не происходит. У mouse нет ключа bird. Таким образом, mouse.bird равно undefined. Затем мы запрашиваем ключ size: mouse.bird.size. Так как mouse.bird это undefined, мы запрашиваем undefined.size. Это не является валидным, и мы получаем ошибку типа Cannot read property "size" of undefined.</p>
+</div>
+</details>
+
+------   
+
+## ✔️16
+_You need to swap the head and the tail of the specified array:_
+_the head (the first half) of array moves to the end, the tail (the second half) moves to the start. The middle element (if it exists) leaves on the same position._
+
+_Return new array._
+
+_For example:_
+```
+[ 1, 2, 3, 4, 5 ]   =>  [ 4, 5, 3, 1, 2 ]
+    \----/   \----/         
+     head     tail 
+
+   [ -1, 2 ]  => [ 2, -1 ] 
+   [ 1, 2, -3, 4, 5, 6, -7, 8 ]   =>  [ 5, 6, -7, 8, 1, 2, -3, 4 ]  
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+``` 
+const swapHeadAndTail = (arr, b = arr.length / 2) => [
+  ...arr.slice(-b),
+  ...arr.slice(b, -b), 
+  ...arr.slice(0, b)
+];
+```
+
+### инфо
+<p>Метод slice() возвращает новый массив, содержащий копию части исходного массива.</p>
+</div>
+</details>
+
+------    
+
+## ✔️17
+_Sum all the numbers of a given array ( cq. list ), except the highest and the lowest element ( by value, not by index! )._
+
+_The highest or lowest element respectively is a single element at each edge, even if there are more than one with the same value._
+
+_Mind the input validation._
+
+_Example:_
+```
+{ 6, 2, 1, 8, 10 } => 16
+{ 1, 1, 11, 2, 3 } => 6
+```
+
+_Input validation_
+_If an empty value ( null, None, Nothing etc. ) is given instead of an array, or the given array is an empty list or a list with only 1 element, return 0._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+``` 
+function sumArray(array) {
+  return Array.isArray(array) && array.length > 1
+    ? array.reduce((s, n) => 
+      {return s + n}, 0) 
+      - Math.min(...array) 
+      - Math.max(...array)
+    : 0
+}
+```
+
+### инфо
+<p>Статический метод Array.isArray() определяет, является ли переданное значение Array.</p>
+<p>Метод массива reduce() позволяет превратить массив в любое другое значение с помощью переданной функции-колбэка и начального значения. Функция-колбэк будет вызвана для каждого элемента массива, и всегда должна возвращать результат.</p>
+<p>Метод Math.min() возвращает наименьшее из нуля или более чисел.</p>
+
+
+</div>
+</details>
+
+------ 
+
+## ✔️18
+_Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b._
+
+_Note: a and b are not ordered!_
+
+_Examples (a, b) --> output (explanation)_
+
+```
+(1, 0) --> 1 (1 + 0 = 1)
+(1, 2) --> 3 (1 + 2 = 3)
+(0, 1) --> 1 (0 + 1 = 1)
+(1, 1) --> 1 (1 since both are same)
+(-1, 0) --> -1 (-1 + 0 = -1)
+(-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
+```
+_Your function should only return a number, not the explanation about how you get that number._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+``` 
+function getSum(a, b) {
+  return (Math.abs(a - b) + 1) * (a + b) / 2
+}
+```
+<p>Метод Math.abs() возвращает абсолютное значение числа. то есть a if ≥ 0 и -a if < 0.</p>
+</div>
+</details>
+
+------ 
+
+## ✔️19
+_Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string)._
+
+_Examples:_
+
+```
+solution('abc', 'bc') // returns true
+solution('abc', 'd') // returns false
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+``` 
+function solution(str, ending) {
+  return str.endsWith(ending);
+};
+```
+<p>Метод endsWith() позволяет определить, заканчивается ли строка символами указанными в скобках, возвращая, соответственно, true или false.</p>
+</div>
+</details>
+
+------ 
+
+## ✔️20
+_ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits._
+
+_If the function is passed a valid PIN string, return true, else return false._
+
+_Examples (Input --> Output)_
+
+```
+"1234"   -->  true
+"12345"  -->  false
+"a234"   -->  false
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+``` 
+function validatePIN(pin) {
+  return /^(\d{4}|\d{6})$/.test(pin)
+}
+```
+<p>Спецсимвол \d совпадает с любой цифрой.  Спецсимвол, обозначающий начало строки, ^. Символ конца строки — знак доллара $.</p>
 </div>
 </details>
 
