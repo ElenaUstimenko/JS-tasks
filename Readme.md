@@ -728,3 +728,121 @@ sum(1, '2');
 </details>
 
 ------ 
+
+## ❔22
+_Что будет в консоли?_
+
+```
+let c = { greeting: 'Hi!' };
+let d;
+
+d = c;
+c.greeting = 'Hello';
+console.log(d.greeting);
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` Hello ```
+
+
+### инфо
+<p>Сначала переменная c указывает на объект. Затем мы указываем переменной d ссылаться на тот же объект, что и c. Когда вы изменяете один объект, то изменяются значения всех ссылок, указывающих на этот объект.</p>
+</div>
+</details>
+
+------  
+
+## ❔23
+_Что будет в консоли?_
+
+```
+let a = 3;
+let b = new Number(3);
+let c = 3;
+
+console.log(a == b);
+console.log(a === b);
+console.log(b === c);
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` true ``` ``` false ``` ``` false ```
+
+
+### инфо
+<p>Оператор == проверяет равенство значений, оба значения равны 3, поэтому возвращается true.</p>
+<p>new Number() это встроенный конструктор функции. И хотя он выглядит как число, это не настоящее число: у него есть ряд дополнительных особенностей, и это объект.</p>
+<p>При использовании оператора === значение и тип должны быть одинаковыми. Но new Number() это не число, это объект, поэтому false.</p>
+</div>
+</details>
+
+------ 
+
+## ❔24
+_Что будет в консоли?_
+
+```
+let greeting;
+greetign = {};
+console.log(greetign);
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` {} ```
+
+
+### инфо
+<p>В консоли выведется объект, потому что мы только что создали пустой объект в глобальном объекте. Когда мы вместо greeting написали greetign, интерпретатор JS на самом деле увидел:</p>
+<p>global.greetign = {} в Node.js + window.greetign = {}, frames.geetign = {} и self.greetign в браузерах + self.greetign в веб-воркерах + globalThis.greetign во всех окружениях</p>
+<p>Нужно использовать "use strict", чтобы избежать такого поведения. Эта запись поможет быть уверенным в том, что переменная была определена перед тем как ей присвоили значение.</p>
+</div>
+</details>
+
+------  
+
+## ❔25
+_Что будет в консоли?_
+
+```
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+const member = new Person('Tom', 'Green');
+Person.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+}
+
+console.log(member.getFullName());
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` TypeError ```
+
+
+### инфо
+<p>В JavaScript функции являются объектами, поэтому метод getFullName добавляется к самому объекту функции-конструктора. По этой причине мы можем вызвать Person.getFullName(), но member.getFullName выдает TypeError.</p>
+<p>Чтобы метод был доступен для всех экземпляров объекта, вы должны добавить его в свойство прототипа:</p>
+
+```  
+Person.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+}
+```
+</div>
+</details>
+
+------ 
