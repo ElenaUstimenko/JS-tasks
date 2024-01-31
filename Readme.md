@@ -1258,7 +1258,7 @@ freddie.colorChange('orange');
 ------
 
 ## ❔ 43
-_ Что будет в консоли?_
+_Что будет в консоли?_
 
 ```
 function Person(firstName, lastName) {
@@ -1289,7 +1289,7 @@ console.log(marta);
 ------
 
 ## ❔ 44
-_ Что будет в консоли?_
+_Что будет в консоли?_
 
 ```
 function getPersonInfo(one, two, three) {
@@ -1319,7 +1319,7 @@ getPersonInfo`${person} is ${age} years old`;
 ------
 
 ## ❔ 45
-_ Какие из этих значений являются "ложными"?_
+_Какие из этих значений являются "ложными"?_
 
 ```
 0;
@@ -1354,7 +1354,7 @@ undefined;
 ------
 
 ## ❔ 46
-_ Что будет в консоли?_
+_Что будет в консоли?_
 
 ```
 (() => {
@@ -1381,6 +1381,222 @@ _ Что будет в консоли?_
 <p>Блок catch получает аргумент x. Это не тот же x, который определен в качестве переменной let x, y;</p>
 <p>Затем мы присваиваем этому аргументу значение 1 и устанавливаем значение для переменной y. Потом выводим в консоль значение аргумента x, которое равно 1.</p>
 <p>За пределами блока catch переменная x все еще undefined, а y равно 2. Когда мы вызываем console.log(x) за пределами блока catch, этот вызов возвращает undefined, а y возвращает 2.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 47
+_Write a function that takes an array of numbers and returns the sum of the numbers. The numbers can be negative or non-integer. If the array does not contain any numbers then you should return 0._
+
+_Examples_
+
+```
+Input: [1, 5.2, 4, 0, -1]
+Output: 9.2
+
+Input: []
+Output: 0
+
+Input: [-2.398]
+Output: -2.398
+```
+_Assumptions_
+_You can assume that you are only given numbers._
+_You cannot assume the size of the array._
+_You can assume that you do get an array and if the array is empty, return 0._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+sum = function (numbers) {
+  "use strict";
+  return numbers.reduce(function(acc, number) {
+    return acc + number;
+  }, 0);
+};
+``` 
+
+
+### инфо
+<p>Метод массива reduce() позволяет превратить массив в любое другое значение с помощью переданной функции-колбэка и начального значения. Функция-колбэк будет вызвана для каждого элемента массива, и всегда должна возвращать результат.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 48
+_Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present)._
+
+_For example,_
+
+```
+[true,  true,  true,  false,
+  true,  true,  true,  true ,
+  true,  false, true,  false,
+  true,  false, false, true ,
+  true,  true,  true,  true ,
+  false, false, true,  true]
+```
+_The correct answer would be 17._
+_Hint: Don't forget to check for bad values like null/undefined_
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function countSheeps(sheep) {
+  return sheep.filter(Boolean).length;
+}
+``` 
+
+
+### инфо
+<p>Объект Boolean представляет значения истинности: true или false.</p>
+<p>Значение, переданное первым параметром, при необходимости преобразуется в логическое значение. Если значение опущено или равно 0, -0, null, false, NaN, undefined или пустой строке (""), объект имеет начальное значение, равное false. Все остальные значения, включая любые объекты или строку "false", создают объект с начальным значением, равным true.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 49
+_In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number._
+
+_Examples_
+
+```
+highAndLow("1 2 3 4 5");  // return "5 1"
+highAndLow("1 2 -3 4 5"); // return "5 -3"
+highAndLow("1 9 3 4 -5"); // return "9 -5"
+```
+_Notes_
+_All numbers are valid Int32, no need to validate them._
+_There will always be at least one number in the input string._
+_Output string must be two numbers separated by a single space, and highest number is first._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function highAndLow(numbers){
+  numbers = numbers.split(' ');
+  return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
+}
+``` 
+
+
+### инфо
+<p>Метод split() разбивает объект String на массив строк путём разделения строки указанной подстрокой.</p>
+<p>Метод Math.max() возвращает наибольшее из нуля или более чисел.</p>
+<p>Метод Math.min() возвращает наименьшее из нуля или более чисел.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 50
+_Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:_
+
+_"I love you"_
+_"a little"_
+_"a lot"_
+_"passionately"_
+_"madly"_
+_"not at all"_
+
+_If there are more than 6 petals, you start over with "I love you" for 7 petals, "a little" for 8 petals and so on._
+_When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions._
+_Your goal in this kata is to determine which phrase the girls would say at the last petal for a flower of a given number of petals. The number of petals is always greater than 0._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function howMuchILoveYou(nbPetals) {
+  const muchLoves = [
+    'I love you',
+    'a little',
+    'a lot',
+    'passionately',
+    'madly',
+    'not at all'
+  ];
+  return muchLoves[(nbPetals - 1) % muchLoves.length];
+}
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 51
+_You take your son to the forest to see the monkeys. You know that there are a certain number there (n), but your son is too young to just appreciate the full number, he has to start counting them from 1._
+
+_As a good parent, you will sit and count with him. Given the number (n), populate an array with all numbers up to and including that number, but excluding zero._
+
+_For example(Input --> Output):_
+
+```
+10 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ 1 --> [1]
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function monkeyCount(n) {
+  let arr = [];
+  for(let i = 1; i <= n; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+``` 
+
+### инфо
+<p>Метод push() добавляет один или более элементов в конец массива и возвращает новую длину массива.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 52
+_Given an array of integers._
+
+_Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative._
+_If the input is an empty array or is null, return an empty array._
+
+_Example_
+
+```
+For input [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15], you should return [10, -65].
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function countPositivesSumNegatives(input) {
+    return input && input.length 
+      ? [input.filter(p => p > 0).length, input.filter(n => n < 0).reduce((a, b) => a + b, 0)] 
+      : [];
+}
+``` 
+
+### инфо
+<p>Метод массива reduce() позволяет превратить массив в любое другое значение с помощью переданной функции-колбэка и начального значения. Функция-колбэк будет вызвана для каждого элемента массива, и всегда должна возвращать результат.</p>
 </div>
 </details>
 
