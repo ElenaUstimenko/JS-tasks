@@ -1223,3 +1223,165 @@ console.log(3 + 4 + '5');
 </details>
 
 ------
+
+## ❔ 42
+_Каким будет результат?_
+
+```
+class Chameleon {
+  static colorChange(newColor) {
+    this.newColor = newColor;
+    return this.newColor;
+  }
+
+  constructor({ newColor = 'green' } = {}) {
+    this.newColor = newColor;
+  }
+}
+
+const freddie = new Chameleon({ newColor: 'purple' });
+freddie.colorChange('orange');
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` TypeError ```
+
+
+### инфо
+<p>Функция colorChange является статической. Статические методы предназначены для работы только в конструкторе, в котором они созданы, и не могут передаваться каким-либо дочерним элементам или вызываться в экземплярах класса. Так как freddie является экземпляром класса Chameleon, функция не может быть вызвана для него. Будет выдана ошибка TypeError.</p>
+</div>
+</details>
+
+------
+
+## ❔ 43
+_ Что будет в консоли?_
+
+```
+function Person(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+
+const tom = new Person('Tom', 'Green');
+const marta = Person('Marta', 'Black');
+
+console.log(tom);
+console.log(marta);
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` Person {firstName: "Tom", lastName: "Green"} ``` и ``` undefined ```
+
+
+### инфо
+<p>Для marta мы не использовали ключевое слово new. Использование new приводит к созданию нового объекта. Но без new он указывает на глобальный объект.</p>
+<p>Мы указали, что this.firstName равно "Marta" и this.lastName равно "Black". На самом деле мы определили global.firstName = 'Marta' и global.lastName = 'Black'. marta осталась undefined, поскольку мы не возвращаем значение из функции Person.</p>
+</div>
+</details>
+
+------
+
+## ❔ 44
+_ Что будет в консоли?_
+
+```
+function getPersonInfo(one, two, three) {
+  console.log(one);
+  console.log(two);
+  console.log(three);
+}
+
+const person = 'Sara';
+const age = 30;
+
+getPersonInfo`${person} is ${age} years old`;
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` ["", " is ", " years old"] ``` ``` "Sara" ``` ``` 30 ```
+
+
+### инфо
+<p>При использовании шаблонных строк первым аргументом всегда будет массив строковых значений. Оставшимися аргументами будут значения переданных выражений.</p>
+</div>
+</details>
+
+------
+
+## ❔ 45
+_ Какие из этих значений являются "ложными"?_
+
+```
+0;
+new Number(0);
+("");
+(" ");
+new Boolean(false);
+undefined;
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` 0 ``` ``` '' ``` ``` undefined ```
+
+
+### инфо
+<p>Есть только 8 "ложных" значений:</p>
+<p>undefined</p>
+<p>null</p>
+<p>NaN</p>
+<p>false</p>
+<p>'' (пустая строка)</p>
+<p>0</p>
+<p>-0</p>
+<p>0n</p>
+<p>Конструкторы функций, такие как new Number и new Boolean являются "истинными".</p>
+</div>
+</details>
+
+------
+
+## ❔ 46
+_ Что будет в консоли?_
+
+```
+(() => {
+  let x, y;
+  try {
+    throw new Error();
+  } catch (x) {
+    (x = 1), (y = 2);
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})();
+```
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+``` 1 ``` ``` undefined ``` ``` 2 ```
+
+
+### инфо
+<p>Блок catch получает аргумент x. Это не тот же x, который определен в качестве переменной let x, y;</p>
+<p>Затем мы присваиваем этому аргументу значение 1 и устанавливаем значение для переменной y. Потом выводим в консоль значение аргумента x, которое равно 1.</p>
+<p>За пределами блока catch переменная x все еще undefined, а y равно 2. Когда мы вызываем console.log(x) за пределами блока catch, этот вызов возвращает undefined, а y возвращает 2.</p>
+</div>
+</details>
+
+------
