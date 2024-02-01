@@ -1601,3 +1601,223 @@ function countPositivesSumNegatives(input) {
 </details>
 
 ------
+
+## ✔️ 53
+_We need a function that can transform a number (integer) into a string._
+
+_What ways of achieving this do you know?_
+
+_Examples (input --> output):_
+
+
+```
+123  --> "123"
+999  --> "999"
+-100 --> "-100"
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function numberToString(num) {
+  return num.toString();
+}
+``` 
+
+### инфо
+<p>Метод toString() возвращает строку, представляющую объект.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 54
+_Given an array of integers, return a new array with each value doubled._
+
+_For example:_
+
+
+```
+[1, 2, 3] --> [2, 4, 6]
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function maps(x){
+  return x.map(n => n * 2);
+}
+``` 
+
+### инфо
+<p>Метод map() создаёт новый массив с результатом вызова указанной функции для каждого элемента массива.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 55
+_You're at the zoo... all the meerkats look weird. Something has gone terribly wrong - someone has gone and switched their heads and tails around!_
+
+_Save the animals by switching them back. You will be given an array which will have three values (tail, body, head). It is your job to re-arrange the array so that the animal is the right way round (head, body, tail)._
+
+_Same goes for all the other arrays/lists that you will get in the tests: you have to change the element positions with the same exact logics
+
+_Simples!_
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function fixTheMeerkat(arr) {
+  return arr.reverse();
+}
+``` 
+
+### инфо
+<p>Метод reverse() на месте обращает порядок следования элементов массива. Первый элемент массива становится последним, а последний — первым.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 56
+_Given a non-empty array of integers, return the result of multiplying the values together in order. Example:_
+
+```
+[1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function grow(x){
+  return x.reduce((a, b)=> a * b);
+}
+``` 
+
+### инфо
+<p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 57
+_In this simple exercise, you will build a program that takes a value, integer , and returns a list of its multiples up to another value, limit . If limit is a multiple of integer, it should be included as well. There will only ever be positive integers passed into the function, not consisting of 0. The limit will always be higher than the base._
+_For example, if the parameters passed are (2, 6), the function should return [2, 4, 6] as 2, 4, and 6 are the multiples of 2 up to 6._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function findMultiples(integer, limit){
+  let result = []
+  
+  for (let i = integer; i <= limit ; i+= integer)
+    result.push(i)
+    
+  return result;
+}
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 58
+_Given a non-empty array of integers, return the result of multiplying the values together in order. Example:_
+
+```
+[1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function grow(x){
+  return x.reduce((a, b)=> a * b);
+}
+``` 
+
+### инфо
+<p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 59
+_Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive )._
+
+_Examples_
+
+```
+n = 0  ==> [1]        # [2^0]
+n = 1  ==> [1, 2]     # [2^0, 2^1]
+n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function powersOfTwo(n){
+  var result = [];
+  for (var i = 0; i <= n; i++) {
+    result.push(Math.pow(2, i));
+  }
+  return result;
+}
+``` 
+
+```
+function powersOfTwo(n) {
+  return Array.from({length: n + 1}, (v, k) => 2 ** k);
+}
+```
+
+### инфо
+<p>Метод Math.pow() возвращает основание, возведённое в степень показатель, то есть, значение выражения: основание показатель.</p>
+<p>Метод Array.from() создаёт новый экземпляр Array из массивоподобного или итерируемого объекта.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 60
+_I'm new to coding and now I want to get the sum of two arrays... Actually the sum of all their elements. I'll appreciate for your help._
+
+_P.S. Each array includes only integer numbers. Output is a number too._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function arrayPlusArray(arr1, arr2) {
+  return arr1.concat(arr2).reduce((a, b) => a + b)
+}
+``` 
+
+### инфо
+<p>Метод concat() возвращает новый массив, состоящий из массива, на котором он был вызван, соединённого с другими массивами и/или значениями, переданными в качестве аргументов.</p>
+<p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
+</div>
+</details>
+
+------
