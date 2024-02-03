@@ -1,5 +1,5 @@
 <h2 align="center"><img align="center" src="./image/JavaScript-logo.png" height="40" width="40"/>     Java Script задачки и вопросы</h2>
-<p align="center">собираю из разных источников и тренируюсь проходить...</p2>
+<p align="center">собираю из разных источников и тренируюсь...</p2>
 
 ------ 
 
@@ -1817,6 +1817,164 @@ function arrayPlusArray(arr1, arr2) {
 ### инфо
 <p>Метод concat() возвращает новый массив, состоящий из массива, на котором он был вызван, соединённого с другими массивами и/или значениями, переданными в качестве аргументов.</p>
 <p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 61
+_Task_
+_Create a method to see whether the string is ALL CAPS._
+
+_Examples (input -> output)_
+
+```
+"c" -> False
+"C" -> True
+"hello I AM DONALD" -> False
+"HELLO I AM DONALD" -> True
+"ACSKLDFJSgSKLDFJSKLDFJ" -> False
+"ACSKLDFJSGSKLDFJSKLDFJ" -> True
+``` 
+
+_In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+String.prototype.isUpperCase=function() {
+  return this==this.toUpperCase()
+  }
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 62
+_Upon arriving at an interview, you are presented with a solid blue cube. The cube is then dipped in red paint, coating the entire surface of the cube. The interviewer then proceeds to cut through the cube in all three dimensions a certain number of times._
+
+_Your function takes as parameter the number of times the cube has been cut. You must return the number of smaller cubes created by the cuts that have at least one red face._
+
+_To make it clearer, the picture below represents the cube after (from left to right) 0, 1 and 2 cuts have been made._
+
+![alt text](image.png)
+
+``` 
+Examples:
+If we cut the cube 2 times, the function should return 26
+If we cut the cube 4 times, the function should return 98
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function countSquares(cuts){
+  return cuts == 0 
+    ? 1 
+    : 6 * cuts * cuts + 2
+}
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 63
+_All of the animals are having a feast! Each animal is bringing one dish. There is just one rule: the dish must start and end with the same letters as the animal's name. For example, the great blue heron is bringing garlic naan and the chickadee is bringing chocolate cake._
+
+_Write a function feast that takes the animal's name and dish as arguments and returns true or false to indicate whether the beast is allowed to bring the dish to the feast._
+
+_Assume that beast and dish are always lowercase strings, and that each has at least two letters. beast and dish may contain hyphens and spaces, but these will not appear at the beginning or end of the string. They will not contain numerals._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function feast(beast, dish) {
+	return beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1]
+}
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 64
+_If you've completed this kata already and want a bigger challenge, here's the 3D version._
+
+_Bob is bored during his physics lessons so he's built himself a toy box to help pass the time. The box is special because it has the ability to change gravity._
+
+There are some columns of toy cubes in the box arranged in a line. The i-th column contains a_i cubes. At first, the gravity in the box is pulling the cubes downwards. When Bob switches the gravity, it begins to pull all the cubes to a certain side of the box, d, which can be either 'L' or 'R' (left or right). Below is an example of what a box of cubes might look like before and after switching gravity.
+
+``` 
++---+                                       +---+
+|   |                                       |   |
++---+                                       +---+
++---++---+     +---+              +---++---++---+
+|   ||   |     |   |   -->        |   ||   ||   |
++---++---+     +---+              +---++---++---+
++---++---++---++---+         +---++---++---++---+
+|   ||   ||   ||   |         |   ||   ||   ||   |
++---++---++---++---+         +---++---++---++---+
+``` 
+
+_Given the initial configuration of the cubes in the box, find out how many cubes are in each of the n columns after Bob switches the gravity._
+
+_Examples input -> output:_
+```
+* 'R', [3, 2, 1, 2]      ->  [1, 2, 2, 3]
+* 'L', [1, 4, 5, 3, 5 ]  ->  [5, 5, 4, 3, 1]
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+const flip=(d, a)=>{
+  if(d === 'R') return a.sort((a, b) => a - b);
+  if(d === 'L') return a.sort((a, b) => b - a);
+}
+``` 
+
+### инфо
+<p>Метод sort() на месте сортирует элементы массива и возвращает отсортированный массив.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 65
+_Summation_
+
+_Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0. Your function only needs to return the result, what is shown between parentheses in the example below is how you reach that result and it's not part of it, see the sample tests._
+
+_For example (Input -> Output):_
+
+``` 
+2 -> 3 (1 + 2)
+8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+var summation = function (num) {
+  var sum = 0;
+  for( var i = 0; i <= num; i++ ){
+    sum += i
+  }
+  return sum;
+}
+``` 
 </div>
 </details>
 
