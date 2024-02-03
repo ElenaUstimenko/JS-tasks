@@ -1860,7 +1860,7 @@ _Your function takes as parameter the number of times the cube has been cut. You
 
 _To make it clearer, the picture below represents the cube after (from left to right) 0, 1 and 2 cuts have been made._
 
-![cube](./image/image.png)
+_./image/image for 62.png_
 
 ``` 
 Examples:
