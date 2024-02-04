@@ -1,5 +1,4 @@
 <h2 align="center"><img align="center" src="./image/JavaScript-logo.png" height="40" width="40"/>     Java Script задачки и вопросы</h2>
-<p align="center">собираю из разных источников и тренируюсь...</p2>
 
 ------ 
 
@@ -1975,6 +1974,148 @@ var summation = function (num) {
   return sum;
 }
 ``` 
+</div>
+</details>
+
+------
+
+## ✔️ 66
+_For every good kata idea there seem to be quite a few bad ones!_
+
+_In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+const well = x => {
+  const count = x.filter(x => x == 'good').length;
+  return count < 1 ? 'Fail!' : 
+         count < 3 ? 'Publish!' : 'I smell a series!';
+}
+``` 
+
+### инфо
+<p>Метод filter() создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 67
+_To find the volume (centimeters cubed) of a cuboid you use the formula:_
+
+_volume = Length * Width * Height_
+
+_But someone forgot to use proper record keeping, so we only have the volume, and the length of a single side!_
+
+_It's up to you to find out whether the cuboid has equal sides (= is a cube)._
+
+_Return true if the cuboid could have equal sides, return false otherwise._
+
+_Return false for invalid numbers too (e.g volume or side is less than or equal to 0)._
+
+_Note: side will be an integer_
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+var cubeChecker = function(volume, side){
+  return Math.pow(side, 3) === volume && side > 0;
+};
+``` 
+
+### инфо
+<p>Метод Math.pow() возвращает основание, возведённое в степень показатель, то есть, значение выражения: основаниепоказатель.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 68
+_Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times._
+
+_Examples (input -> output)_
+``` 
+6, "I"     -> "IIIIII"
+5, "Hello" -> "HelloHelloHelloHelloHello"
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function repeatStr (n, s) {
+  return s.repeat(n);
+}
+``` 
+
+### инфо
+<p>Метод repeat() конструирует и возвращает новую строку, содержащую указанное количество соединённых вместе копий строки, на которой он был вызван.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 69
+_In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?_
+
+_Examples_
+``` 
+makeNegative(1);    // return -1
+makeNegative(-5);   // return -5
+makeNegative(0);    // return 0
+makeNegative(0.12); // return -0.12
+``` 
+_Notes_
+_The number can be negative already, in which case no change is required._
+_Zero (0) is not checked for any specific sign. Negative zeros make no mathematical sense._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function makeNegative(num) {
+  if ( num > 0 ) {
+    return -num;
+  } else {
+    return num;
+  }
+}
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 70
+_You get an array of numbers, return the sum of all of the positives ones._
+
+Example 
+```
+[1,-4,7,12] => 1 + 7 + 12 = 20
+```
+_Note: if there is nothing to sum, the sum is default to 0._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function positiveSum(arr) {
+  return arr.reduce((a,b)=> a + (b > 0 ? b : 0), 0);
+}
+``` 
+
+### инфо
+<p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
 </div>
 </details>
 
