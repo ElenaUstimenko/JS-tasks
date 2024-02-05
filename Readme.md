@@ -2120,3 +2120,173 @@ function positiveSum(arr) {
 </details>
 
 ------
+
+## ✔️ 71
+_It's the academic year's end, fateful moment of your school report. The averages must be calculated. All the students come to you and entreat you to calculate their average for them. Easy ! You just need to write a script._
+
+_Return the average of the given array rounded down to its nearest integer._
+
+_The array will never be empty._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function getAverage(marks) {
+  return Math.floor(marks.reduce((a, b) => a + b, 0) / marks.length);
+}
+``` 
+
+### инфо
+<p>Метод Math.floor() - округление вниз. Округляет аргумент до ближайшего меньшего целого.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 72
+_Complete the function which takes two arguments and returns all numbers which are divisible by the given divisor. First argument is an array of numbers and the second is the divisor._
+
+_Example(Input1, Input2 --> Output)._
+``` 
+[1, 2, 3, 4, 5, 6], 2 --> [2, 4, 6]
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function divisibleBy(numbers, divisor) {
+  return numbers.filter(n => n % divisor === 0)
+}
+``` 
+
+### инфо
+<p>Метод filter() создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 73
+_Description_
+_An infinite number of shelves are arranged one above the other in a staggered fashion.
+The cat can jump either one or three shelves at a time: from shelf i to shelf i+1 or i+3 (the cat cannot climb on the shelf directly above its head), according to the illustration:_
+
+``` 
+                 ┌────────┐
+                 │-6------│
+                 └────────┘
+┌────────┐       
+│------5-│        
+└────────┘  ┌─────► OK!
+            │    ┌────────┐
+            │    │-4------│
+            │    └────────┘
+┌────────┐  │
+│------3-│  │     
+BANG!────┘  ├─────► OK! 
+  ▲  |\_/|  │    ┌────────┐
+  │ ("^-^)  │    │-2------│
+  │ )   (   │    └────────┘
+┌─┴─┴───┴┬──┘
+│------1-│
+└────────┘
+``` 
+_Input_
+_Start and finish shelf numbers (always positive integers, finish no smaller than start)_
+
+_Task_
+_Find the minimum number of jumps to go from start to finish_
+
+_Example_
+_Start 1, finish 5, then answer is 2 (1 => 4 => 5 or 1 => 2 => 5)_
+
+_Inspirers_
+
+![cats](./image/cats%20for%2073.jpg)
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function solution(start, finish) {
+  return Math.floor((finish - start) / 3) + (finish - start) % 3;
+}
+``` 
+
+### инфо
+<p>Метод Math.floor() - округление вниз. Округляет аргумент до ближайшего меньшего целого.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 74
+_Sometimes, I want to quickly be able to convert miles per imperial gallon (mpg) into kilometers per liter (kpl)._
+
+_Create an application that will display the number of kilometers per liter (output) based on the number of miles per imperial gallon (input)._
+
+_Make sure to round off the result to two decimal points._
+
+_Some useful associations relevant to this kata:_
+
+_1 Imperial Gallon = 4.54609188 litres_
+_1 Mile = 1.609344 kilometres_
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function converter(mpg) {
+  return Math.round(((mpg * 1.609344) / 4.54609188) * 100) / 100;
+}
+``` 
+```
+function converter(mpg) {
+  return parseFloat((1.609344 / 4.54609188 * mpg).toFixed(2));
+}
+``` 
+
+
+### инфо
+<p>Метод Math.round() возвращает число, округлённое к ближайшему целому.</p>
+<p>Метод toFixed() форматирует число, используя запись с фиксированной запятой.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 75
+_Summation_
+_Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0. Your function only needs to return the result, what is shown between parentheses in the example below is how you reach that result and it's not part of it, see the sample tests._
+
+_For example (Input -> Output):_
+```
+2 -> 3 (1 + 2)
+8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+var summation = function(num) {
+  let result = 0;
+  for (var i = 1; i <= num; i++) {
+    result += i;
+  }
+  
+  return result;
+}
+``` 
+</div>
+</details>
+
+------
