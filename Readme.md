@@ -1734,25 +1734,30 @@ function findMultiples(integer, limit){
 
 ------
 
-## ✔️ 58
-_Given a non-empty array of integers, return the result of multiplying the values together in order. Example:_
+## ❔ 58
+_Каким будет результат?_
 
 ```
-[1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24
+const firstPromise = new Promise((res, rej) => {
+  setTimeout(res, 500, 'один');
+});
+
+const secondPromise = new Promise((res, rej) => {
+  setTimeout(res, 100, 'два');
+});
+
+Promise.race([firstPromise, secondPromise]).then(res => console.log(res));
 ```
 
-<details><summary><b>решение</b></summary>
+
+<details><summary><b>ответ</b></summary>
 
 <div>
 
-```
-function grow(x){
-  return x.reduce((a, b)=> a * b);
-}
-``` 
+```"два"``` 
 
 ### инфо
-<p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
+<p>Когда мы передаем несколько промисов методу Promise.race, он разрешает/отклоняет первый промис, который разрешается/отклоняется. В метод setTimeout мы передаем таймер: 500 мс для первого промиса (firstPromise) и 100 мс для второго промиса (secondPromise). Это означает, что secondPromise разрешается первым со значением 'два'. res теперь содержит значение 'два', которое выводиться в консоль.</p>
 </div>
 </details>
 
