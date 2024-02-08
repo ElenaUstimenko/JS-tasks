@@ -2290,3 +2290,205 @@ var summation = function(num) {
 </details>
 
 ------
+
+## ✔️ 76
+_Rock Paper Scissors_
+_Let's play! You have to return which player won! In case of a draw return Draw!._
+
+_Examples(Input1, Input2 --> Output):_
+```
+"scissors", "paper" --> "Player 1 won!"
+"scissors", "rock" --> "Player 2 won!"
+"paper", "paper" --> "Draw!"
+```
+![scissors](./image/scissors%20for%2076.png)
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+const rps = (p1, p2) => {
+  if (p1 == p2)
+    return 'Draw!';
+    
+  if (p1 == 'rock' && p2 == 'scissors') 
+    return 'Player 1 won!'
+  else if (p1 == 'scissors' && p2 == 'paper') 
+    return 'Player 1 won!'
+  else if (p1 == 'paper' && p2 == 'rock') 
+    return 'Player 1 won!'
+  else
+    return 'Player 2 won!';
+};
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 77
+_In this Kata, you will be given an array of numbers in which two numbers occur once and the rest occur only twice. Your task will be to return the sum of the numbers that occur only once._
+
+_For example,_
+```
+repeats([4,5,7,5,4,8]) = 15
+```
+_because only the numbers 7 and 8 occur once, and their sum is 15. Every other number occurs twice._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function repeats(arr){
+  return arr.filter(v => arr.indexOf(v) === arr.lastIndexOf(v)).reduce((a, b) => a + b, 0);
+};
+``` 
+
+### инфо
+<p>Метод filter() создаёт новый массив со всеми элементами, прошедшими проверку, задаваемую в передаваемой функции.</p>
+<p>Метод indexOf() возвращает первый индекс, по которому данный элемент может быть найден в массиве или -1, если такого индекса нет.</p>
+<p>Метод lastIndexOf() возвращает индекс последнего вхождения указанного значения в строковый объект String, на котором он был вызван, или -1, если ничего не было найдено.</p>
+<p>Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 78
+_Let us begin with an example:_
+
+_Take a number: 56789. Rotate left, you get 67895._
+
+_Keep the first digit in place and rotate left the other digits: 68957._
+
+_Keep the first two digits in place and rotate the other ones: 68579._
+
+_Keep the first three digits and rotate left the rest: 68597. Now it is over since keeping the first four it remains only one digit which rotated is itself._
+
+_You have the following sequence of numbers:_
+
+```
+56789 -> 67895 -> 68957 -> 68579 -> 68597
+```
+
+_and you must return the greatest:_ ```68957```
+
+_Task_
+_Write function max_rot(n) which given a positive integer n returns the maximum number you got doing rotations similar to the above example._
+
+_So max_rot (or maxRot or ... depending on the language) is such as:_
+
+_max_rot(56789) should return 68957_
+
+_max_rot(38458215) should return 85821534_
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function maxRot(n){
+  let max = n
+  let arr = String(n).split('')
+  for(let i = 0; i < arr.length; i++){
+    arr.push(arr.splice(i, 1))
+    const num = Number(arr.join(''))
+    if(num > max) max = num
+  }
+  return max;
+}
+``` 
+
+### инфо
+<p>Метод split() разбивает объект String на массив строк путём разделения строки указанной подстрокой.</p>
+<p>Метод push() добавляет один или более элементов в конец массива и возвращает новую длину массива.</p>
+<p>Метод join() объединяет все элементы массива (или массивоподобного объекта) в строку.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 79
+_Story_
+_YouTube had a like and a dislike button, which allowed users to express their opinions about particular content. It was set up in such a way that you cannot like and dislike a video at the same time. There are two other interesting rules to be noted about the interface: Pressing a button, which is already active, will undo your press. If you press the like button after pressing the dislike button, the like button overwrites the previous "Dislike" state. The same is true for the other way round._
+
+_Task_
+_Create a function that takes in a list of button inputs and returns the final state._
+
+_Examples_
+
+```
+likeOrDislike([Dislike]) => Dislike
+likeOrDislike([Like,Like]) => Nothing
+likeOrDislike([Dislike,Like]) => Like
+likeOrDislike([Like,Dislike,Dislike]) => Nothing
+```
+
+_Notes_
+_If no button is currently active, return Nothing._
+_If the list is empty, return Nothing._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function likeOrDislike(buttons) {
+  let state = 'Nothing';
+
+  for (let i = 0; i < buttons.length; i++) {
+    if (buttons[i] === state) {
+      state = 'Nothing'
+    } else {
+      state = buttons[i]
+    }
+  }
+
+  return state;
+}
+``` 
+</div>
+</details>
+
+------
+
+## ✔️ 80
+_The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed._
+
+_To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap._
+
+_Input_
+_Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap._
+
+_Output_
+_Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category._
+
+_Example_
+
+```
+input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+```
+
+_Notes_
+_If no button is currently active, return Nothing._
+_If the list is empty, return Nothing._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function openOrSenior(data){
+  return data.map(([age, handicap]) => (age > 54 && handicap > 7) ? 'Senior' : 'Open');
+}
+``` 
+
+### инфо
+<p>Метод map() создаёт новый массив с результатом вызова указанной функции для каждого элемента массива.</p>
+</div>
+</details>
+
+------
