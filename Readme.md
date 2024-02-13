@@ -2528,3 +2528,39 @@ console.log(gen.next().value);
 </details>
 
 ------
+
+## ❔ 82
+_Что будет на выходе?_
+
+```
+const promise1 = Promise.resolve('First')
+const promise2 = Promise.resolve('Second')
+const promise3 = Promise.reject('Third')
+const promise4 = Promise.resolve('Fourth')
+
+const runPromises = async () => {
+	const res1 = await Promise.all([promise1, promise2])
+	const res2  = await Promise.all([promise3, promise4])
+	return [res1, res2]
+}
+
+runPromises()
+	.then(res => console.log(res))
+	.catch(err => console.log(err))
+```
+
+
+<details><summary><b>ответ</b></summary>
+
+<div>
+
+```'Third'```
+
+### инфо
+<p>Метод Promise.all выполняет переданные промисы параллельно. Если одно обещание не выполняется, метод Promise.all отклоняется со значением отклоненного обещания. В этом случае promise3 отклонен со значением "Third". Мы перехватываем отклоненное значение в цепочке методов catch при вызове runPromises, чтобы перехватывать любые ошибки внутри функции runPromises. Только "Third" регистрируется, так как promise3 отклонено с этим значением.</p>
+<p>Статический Promise.resolve()метод «преобразовывает» заданное значение в файл Promise.</p>
+<p>Статический Promise.reject()метод возвращает Promiseобъект, отклоненный по указанной причине.</p>
+</div>
+</details>
+
+------
