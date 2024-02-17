@@ -2755,3 +2755,81 @@ function removeSmallest(numbers) {
 </details>
 
 ------
+
+## ✔️ 88
+_Jack really likes his number five: the trick here is that you have to multiply each number by 5 raised to the number of digits of each numbers, so, for example:_
+
+``` 
+multiply(3) == 15 // 3 * 5¹
+multiply(10) == 250 // 10 * 5²
+multiply(200) == 25000 // 200 * 5³
+multiply(0) == 0 // 0 * 5¹
+multiply(-3) == -15 // -3 * 5¹
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function multiply(number) {
+  return number * Math.pow(5, Math.abs(number).toString().length);
+}
+``` 
+
+### инфо
+<p>Метод Math.pow() возвращает основание, возведённое в степень показатель, то есть, значение выражения: основаниепоказатель.</p>
+<p>Метод Math.abs() возвращает абсолютное значение числа.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 89
+_A variation of determining leap years, assuming only integers are used and years can be negative and positive._
+
+_Write a function which will return the days in the year and the year entered in a string. For example:_
+
+``` 
+yearDays(2000) returns "2000 has 366 days"
+``` 
+_There are a few assumptions we will accept the year 0, even though there is no year 0 in the Gregorian Calendar._
+
+_Also the basic rule for validating a leap year are as follows_
+
+_Most years that can be divided evenly by 4 are leap years._
+
+_Exception: Century years are NOT leap years UNLESS they can be evenly divided by 400._
+
+_So the years 0, -64 and 2016 will return 366 days. Whilst 1974, -10 and 666 will return 365 days._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function yearDays(year) {
+  if (year % 4 !== 0) {
+    return year + ' has 365 days';
+  } else if (year % 100 !== 0) {
+    return year + ' has 366 days';
+  } else if (year % 400 !== 0) {
+    return year + ' has 365 days';
+  } else {
+    return year + ' has 366 days';
+  }
+}
+``` 
+``` 
+function yearDays(year) {
+  return year + ' has ' + (!(year % 100) && year % 400 || year % 4 ? '365' : '366') + ' days';
+}
+``` 
+### инфо
+<p>Метод Math.pow() возвращает основание, возведённое в степень показатель, то есть, значение выражения: основаниепоказатель.</p>
+<p>Метод Math.abs() возвращает абсолютное значение числа.</p>
+</div>
+</details>
+
+------
