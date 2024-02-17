@@ -2619,3 +2619,139 @@ console.log(animals[dog])
 </details>
 
 ------
+
+## ✔️ 85
+_Marcus was spending his last summer day playing chess with his friend Rose._
+
+_Surprisingly, they had a lot of pieces (we suspect Marcus is a part-time thief, but we will leave that aside), and Marcus wondered in how many different positions could 8 towers (rooks) be in the board, without threatening themselves._
+
+_Rose (who was smarter) was wondering if there was any relation between the size of the board, and the number of positions._
+
+_So, you should help!_
+
+_Write a function that, given N (positive-only integer) the size of the board , returns the number of different combinations in which these towers can be._
+
+_Example_
+
+```
+towerCombination(2) returns 2, because only the following possibilities can be achieved.
+
+| x 0 |
+| 0 x |
+
+| 0 x |
+| x 0 |
+```
+
+```
+towerCombination(3) returns 6, because only the following possibilities can be achieved.
+
+| x 0 0 |
+| 0 x 0 |
+| 0 0 x |
+
+| x 0 0 |
+| 0 0 x |
+| 0 x 0 |
+
+| 0 x 0 |
+| x 0 0 |
+| 0 0 x |
+
+| 0 x 0 |
+| 0 0 x |
+| x 0 0 |
+
+| 0 0 x |
+| x 0 0 |
+| 0 x 0 |
+
+| 0 0 x |
+| 0 x 0 |
+| x 0 0 |
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function towerCombination(n) {
+  let result = 1n;
+  for (let i = 2; i <= n; i += 1) {
+    result *= BigInt(i);
+  }
+  return result;
+}
+``` 
+
+### инфо
+<p>BigInt – это специальный числовой тип, который предоставляет возможность работать с целыми числами произвольной длины.</p>
+<p>Чтобы создать значение типа BigInt, необходимо добавить n в конец числового литерала или вызвать функцию BigInt, которая создаст число типа BigInt из переданного аргумента. Аргументом может быть число, строка и др.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 86
+_Simple, given a string of words, return the length of the shortest word(s)._
+
+_String will never be empty and you do not need to account for different data types._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function findShort(s){
+    return Math.min(...s.split(" ").map (s => s.length));
+}
+``` 
+
+### инфо
+<p>Метод Math.min() возвращает наименьшее из нуля или более чисел.</p>
+<p>Метод split() разбивает объект String на массив строк путём разделения строки указанной подстрокой.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 87
+_The museum of incredibly dull things_
+_The museum of incredibly dull things wants to get rid of some exhibits. Miriam, the interior architect, comes up with a plan to remove the most boring exhibits. She gives them a rating, and then removes the one with the lowest rating._
+
+_However, just as she finished rating all exhibits, she's off to an important fair, so she asks you to write a program that tells her the ratings of the exhibits after removing the lowest one. Fair enough._
+
+_Task_
+_Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with the lowest index. If you get an empty array/list, return an empty array/list._
+
+_Don't change the order of the elements that are left._
+
+_Examples_
+
+``` 
+* Input: [1,2,3,4,5], output = [2,3,4,5]
+* Input: [5,3,2,1,4], output = [5,3,2,4]
+* Input: [2,2,1,2,1], output = [2,2,2,1]
+``` 
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function removeSmallest(numbers) {
+  let indexOfMin = numbers.indexOf(Math.min(...numbers));
+  return [...numbers.slice(0, indexOfMin), ...numbers.slice(indexOfMin + 1)];
+}
+``` 
+
+### инфо
+<p>Метод indexOf() возвращает первый индекс, по которому данный элемент может быть найден в массиве или -1, если такого индекса нет.</p>
+<p>Метод Math.min() возвращает наименьшее из нуля или более чисел.</p>
+<p>Метод slice() возвращает новый массив, содержащий копию части исходного массива.</p>
+</div>
+</details>
+
+------
