@@ -2892,3 +2892,102 @@ getFruit([['🍍'], ['🍊', '🍌']])
 </details>
 
 ------
+
+## ✔️ 92
+_A variation of determining leap years, assuming only integers are used and years can be negative and positive._
+
+_Write a function which will return the days in the year and the year entered in a string. For example:_
+
+```
+yearDays(2000) returns "2000 has 366 days"
+```
+_There are a few assumptions we will accept the year 0, even though there is no year 0 in the Gregorian Calendar._
+
+_Also the basic rule for validating a leap year are as follows_
+
+_Most years that can be divided evenly by 4 are leap years._
+
+_Exception: Century years are NOT leap years UNLESS they can be evenly divided by 400._
+
+_So the years 0, -64 and 2016 will return 366 days. Whilst 1974, -10 and 666 will return 365 days._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function yearDays(year) {
+  return year + ' has ' + (!(year % 100) && year % 400 || year % 4 ? '365' : '366') + ' days';
+}
+```
+</div>
+</details>
+
+------
+
+## ✔️ 93
+_Congratulations! That Special Someone has given you their phone number._
+
+_But WAIT, is it a valid number?_
+
+_Your task is to write a function that verifies whether a given string contains a valid British mobile (cell) phone number or not._
+
+_If valid, return 'In with a chance'._
+
+_If invalid, or if you're given an empty string, return 'Plenty more fish in the sea'._
+
+_A number can be valid in the following ways:_
+
+_Here in the UK mobile numbers begin with '07' followed by 9 other digits, e.g. '07454876120'._
+
+_Sometimes the number is preceded by the country code, the prefix '+44', which replaces the '0' in ‘07’, e.g. '+447454876120'._
+
+_And sometimes you will find numbers with dashes in-between digits or on either side, e.g. '+44--745---487-6120' or '-074-54-87-61-20-'. As you can see, dashes may be consecutive._
+
+_Good Luck Romeo/Juliette!_
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function validateNumber(str){
+  return /^(\+44|0)7\d{9}$/.test(str.replace(/-/g,'')) ? 'In with a chance' : 'Plenty more fish in the sea';
+}
+```
+</div>
+</details>
+
+------
+
+## ✔️ 94
+_Your website is divided vertically in sections, and each can be of different size (height)._
+_You need to establish the section index (starting at 0) you are at, given the scrollY and sizes of all sections.
+Sections start with 0, so if first section is 200 high, it takes 0-199 "pixels" and second starts at 200._
+
+_Example:_
+_With scrollY = 300 and sizes = [300,200,400,600,100]_
+
+_the result will be 1 as it's the second section._
+
+_With scrollY = 1600 and size = [300,200,400,600,100]_
+
+_the result will be -1 as it's past last section._
+
+_Given the scrollY integer (always non-negative) and an array of non-negative integers (with at least one element), calculate the index (starting at 0) or -1 if scrollY falls beyond last section (indication of an error)._
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+const getSectionIdFromScroll = (scrollY, sizes, sum = 0) => sizes.findIndex(el => (sum += el) > scrollY);
+```
+### инфо
+<p>Метод findIndex() возвращает индекс в массиве, если элемент удовлетворяет условию проверяющей функции. В противном случае возвращается -1.</p>
+</div>
+</details>
+
+------
