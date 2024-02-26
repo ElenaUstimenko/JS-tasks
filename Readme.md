@@ -2991,3 +2991,78 @@ const getSectionIdFromScroll = (scrollY, sizes, sum = 0) => sizes.findIndex(el =
 </details>
 
 ------
+
+## ✔️ 95
+_Create a function that always returns True/true for every item in a given list._
+_However, if an element is the word 'flick', switch to always returning the opposite boolean value._
+
+_Examples_
+
+```
+['codewars', 'flick', 'code', 'wars'] ➞ [True, False, False, False]
+
+['flick', 'chocolate', 'adventure', 'sunshine'] ➞ [False, False, False, False]
+
+['bicycle', 'jarmony', 'flick', 'sheep', 'flick'] ➞ [True, True, False, False, True]
+```
+_Notes_
+-"flick" will always be given in lowercase._
+_A list may contain multiple flicks._
+_Switch the boolean value on the same element as the flick itself._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function flickSwitch(arr){
+  let flick = true
+  return arr.map(item => item === 'flick'? flick = !flick: flick)
+}
+```
+### инфо
+<p>Метод map() создаёт новый массив с результатом вызова указанной функции для каждого элемента массива.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 96
+_Your task is to create a function that does four basic mathematical operations._
+
+_The function should take three arguments - operation(string/char), value1(number), value2(number)._
+_The function should return result of numbers after applying the chosen operation._
+
+_Examples(Operator, value1, value2) --> output_
+
+```
+('+', 4, 7) --> 11
+('-', 15, 18) --> -3
+('*', 5, 5) --> 25
+('/', 49, 7) --> 7
+```
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function basicOp(operation, value1, value2) {
+    switch (operation) {
+        case '+':
+            return value1 + value2;
+        case '-':
+            return value1 - value2;
+        case '*':
+            return value1 * value2;
+        case '/':
+            return value1 / value2;
+        default:
+            return 0;
+    }
+}
+```
+</div>
+</details>
+
+------
