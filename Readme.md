@@ -3188,3 +3188,212 @@ Object[method](keys.map((_, i) => {
 </details>
 
 ------
+
+## ✔️ 101
+_Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts._
+
+_Each two non empty parts will be in a pair (or an array for languages without tuples or a structin C - C: see Examples test Cases - )_
+_Each part will be in a string_
+_Elements of a pair must be in the same order as in the original array._
+_Examples of returns in different languages:_
+
+```
+a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+[["az", "toto picaro zone kiwi"], ["az toto", "picaro zone kiwi"], ["az toto picaro", "zone kiwi"], ["az toto picaro zone", "kiwi"]] 
+or
+ a = {"az", "toto", "picaro", "zone", "kiwi"} -->
+{{"az", "toto picaro zone kiwi"}, {"az toto", "picaro zone kiwi"}, {"az toto picaro", "zone kiwi"}, {"az toto picaro zone", "kiwi"}}
+or
+a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+[("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
+or 
+a = [|"az", "toto", "picaro", "zone", "kiwi"|] -->
+[("az", "toto picaro zone kiwi"), ("az toto", "picaro zone kiwi"), ("az toto picaro", "zone kiwi"), ("az toto picaro zone", "kiwi")]
+or
+a = ["az", "toto", "picaro", "zone", "kiwi"] -->
+"(az, toto picaro zone kiwi)(az toto, picaro zone kiwi)(az toto picaro, zone kiwi)(az toto picaro zone, kiwi)"
+```
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function partlist(arr) {
+  return arr.map((v, i) => [arr.slice(0, i).join(' '), arr.slice(i).join(' ')]).slice(1)
+}
+```
+
+
+### инфо
+<p>Метод slice() возвращает новый массив, содержащий копию части исходного массива.</p>
+<p>Метод join() объединяет все элементы массива (или массивоподобного объекта) в строку.</p>
+</div>
+</details>
+
+------
+
+## ✔️ 102
+_Make multiple functions that will return the sum, difference, modulus, product, quotient, and the exponent respectively._
+
+_Please use the following function names:_
+
+_addition = add_
+
+_multiply = multiply_
+
+_division = divide (both integer and float divisions are accepted)_
+
+_modulus = mod_
+
+_exponential = exponent_
+
+_subtraction = subt_
+
+_Note: All math operations will be: a (operation) b_
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function add(a, b) {
+    return a + b
+}
+
+function divide(a, b) {
+    return a / b
+}
+
+function multiply(a, b) {
+    return a * b
+}
+
+function mod(a, b) {
+    return a % b
+}
+   
+function exponent(a, b) {
+    return a ** b
+}
+    
+function subt(a, b) {
+    return a - b
+}
+```
+</div>
+</details>
+
+------
+
+## ✔️ 103
+_Description_
+_We need a function that can transform a string into a number. What ways of achieving this do you know?_
+
+_Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number._
+
+_Examples_
+
+```
+"1234" --> 1234
+"605"  --> 605
+"1405" --> 1405
+"-7" --> -7
+```
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+var stringToNumber = function(str) {
+  return Number(str);
+}
+```
+</details>
+
+------
+
+## ✔️ 104
+_Given a string indicating a range of letters, return a string which includes all the letters in that range, including the last letter._
+_Note that if the range is given in capital letters, return the string in capitals also!_
+
+_Examples_
+
+```
+"a-z" ➞ "abcdefghijklmnopqrstuvwxyz"
+"h-o" ➞ "hijklmno"
+"Q-Z" ➞ "QRSTUVWXYZ"
+"J-J" ➞ "J"
+```
+_Notes_
+_A hyphen will separate the two letters in the string._
+_You don't need to worry about error handling in this kata (i.e. both letters will be the same case and the second letter will not be before the first alphabetically)._
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function gimmeTheLetters(sp) {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const indexFirstLetter = alphabet.indexOf(sp[0].toLowerCase());
+  const indexSecondLetter = alphabet.indexOf(sp[2].toLowerCase());
+  if (sp[0] !== alphabet[indexFirstLetter]) {
+    return alphabet.toUpperCase().slice(indexFirstLetter, indexSecondLetter + 1)
+  
+  } else {
+    return alphabet.slice(indexFirstLetter, indexSecondLetter + 1)
+  }
+}
+```
+
+
+### инфо
+<p>Метод indexOf() возвращает первый индекс, по которому данный элемент может быть найден в массиве или -1, если такого индекса нет.</p>
+<p>Метод toLowerCase() возвращает значение строки, на которой он был вызван, преобразованное в нижний регистр.</p>
+<p>Метод toUpperCase() возвращает значение строки, на которой он был вызван, преобразованное в верхний регистр.</p>
+<p>Метод slice() возвращает новый массив, содержащий копию части исходного массива.</p>
+</details>
+
+------
+
+## ✔️ 105
+_A non-empty array a of length n is called an array of all possibilities if it contains all numbers between 0 and a.length - 1 (both inclusive)._
+
+_Write a function that accepts an integer array and returns true if the array is an array of all possibilities, else false._
+
+_Examples:_
+
+```
+[1,2,0,3] => True
+# Includes all numbers between 0 and a.length - 1 (4 - 1 = 3)
+
+[0,1,2,2,3] => False
+# Doesn't include all numbers between 0 and a.length - 1 (5 - 1 = 4)
+
+[0] => True
+# Includes all numbers between 0 and a.length - 1 (1 - 1 = 0).
+```
+
+
+<details><summary><b>решение</b></summary>
+
+<div>
+
+```
+function isAllPossibilities(x){
+	return x.length > 0 ? x.every((a,i) => x.includes(i)) : false;
+}
+```
+
+
+### инфо
+<p>Метод every() проверяет, удовлетворяют ли все элементы массива условию, заданному в передаваемой функции.</p>
+<p>Метод includes() определяет, содержит ли массив определённый элемент, возвращая в зависимости от этого true или false.</p>
+</details>
+
+------
